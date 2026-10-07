@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartStock - Inventory Management</title>
+
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+    <div class="background-shape"></div>
+
+    <div class="background-shape-2"></div>
+
+    <div class="background-shape-3"></div>
+
+    <div class="background-shape-4"></div>
+
+    <div class="background-shape-5"></div>
+
+    <div class="background-shape-6"></div>
+
+    <div class="background-shape-7"></div>
+
+    <div class="background-shape-8"></div>
+
+    <!-- ==========================================
+         NAVIGATION
+    =========================================== -->
+
+    <header class="navbar">
+
+        <div class="logo-area"
+             onclick="showView('home', this)">
+
+            <div class="logo-icon">
+                S
+            </div>
+
+            <div>
+
+                <h2>
+                    SmartStock
+                </h2>
+
+                <span>
+                    Inventory Management
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="nav-link active"
+                    onclick="showView('home', this)">
+
+                Home
+
+            </button>
+
+
+            <button class="nav-link"
+                    onclick="showView('features', this)">
+
+                Features
+
+            </button>
+
+
+            <button class="nav-link"
+                    onclick="showView('about', this)">
+
+                About
+
+            </button>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button class="login-btn"
+                    onclick="goToLogin()">
+
+                Login
+
+            </button>
+
+
+            <button class="register-btn"
+                    onclick="openRegister()">
+
+                Get Started
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         HOME
+    =========================================== -->
+
+    <main id="homeView"
+          class="page-view">
+
+
+        <section class="hero">
+
+
+            <div class="hero-content">
+
+
+                <div class="small-badge">
+
+                    <span class="status-dot"></span>
+
+                    Smart Inventory Solution
+
+                </div>
+
+
+                <h1>
+
+                    Manage your inventory
+
+                    <span>
+                        smarter.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    SmartStock helps you manage products,
+                    monitor stock levels and receive
+                    low-stock alerts from one simple dashboard.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+
+                    <button class="primary-btn"
+                            onclick="openRegister()">
+
+                        Get Started
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button class="secondary-btn"
+                            onclick="goToLogin()">
+
+                        Login to Dashboard
+
+                    </button>
+
+
+                </div>
+
+
+                <div class="trust-row">
+
+
+                    <div>
+
+                        <strong>
+                            Easy
+                        </strong>
+
+                        <small>
+                            to manage
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Real-time
+                        </strong>
+
+                        <small>
+                            stock tracking
+                        </small>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Smart
+                        </strong>
+
+                        <small>
+                            alert system
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DASHBOARD PREVIEW -->
+
+            <div class="dashboard-preview">
+
+
+                <div class="preview-top">
+
+                    <div>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                        <h3>
+                            Inventory Overview
+                        </h3>
+
+                    </div>
+
+
+                    <div class="profile-circle">
+                        D
+                    </div>
+
+                </div>
+
+
+                <div class="preview-stats">
+
+
+                    <div class="preview-card">
+
+                        <span>
+                            Total Products
+                        </span>
+
+                        <strong>
+                            128
+                        </strong>
+
+                        <small>
+                            ↑ 12% this month
+                        </small>
+
+                    </div>
+
+
+                    <div class="preview-card warning-card">
+
+                        <span>
+                            Low Stock
+                        </span>
+
+                        <strong>
+                            07
+                        </strong>
+
+                        <small>
+                            Needs attention
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stock-box">
+
+
+                    <div class="stock-header">
+
+                        <span>
+                            Stock Overview
+                        </span>
+
+                        <span class="green-text">
+                            Live
+                        </span>
+
+                    </div>
+
+
+                    <div class="stock-item">
+
+                        <div class="item-icon">
+                            ⌨
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Keyboard
+                            </strong>
+
+                            <small>
+                                Electronics
+                            </small>
+
+                        </div>
+
+                        <div class="stock-number low">
+                            07
+                        </div>
+
+                    </div>
+
+
+                    <div class="stock-item">
+
+                        <div class="item-icon">
+                            🖱
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Wireless Mouse
+                            </strong>
+
+                            <small>
+                                Electronics
+                            </small>
+
+                        </div>
+
+                        <div class="stock-number">
+                            25
+                        </div>
+
+                    </div>
+
+
+                    <div class="stock-item">
+
+                        <div class="item-icon">
+                            📓
+                        </div>
+
+                        <div class="item-info">
+
+                            <strong>
+                                Notebook
+                            </strong>
+
+                            <small>
+                                Stationery
+                            </small>
+
+                        </div>
+
+                        <div class="stock-number">
+                            40
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="floating-alert">
+
+
+                    <div class="alert-icon">
+                        !
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Low Stock Alert
+                        </strong>
+
+                        <p>
+                            Keyboard stock is below
+                            minimum level.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- HOME STRIP -->
+
+        <section class="home-strip">
+
+
+            <div>
+
+                <span class="strip-icon">
+                    📦
+                </span>
+
+                <div>
+
+                    <strong>
+                        Product Management
+                    </strong>
+
+                    <p>
+                        Add, update and remove products easily.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <span class="strip-icon">
+                    ⚡
+                </span>
+
+                <div>
+
+                    <strong>
+                        Smart Alerts
+                    </strong>
+
+                    <p>
+                        Know when your stock needs attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <span class="strip-icon">
+                    📊
+                </span>
+
+                <div>
+
+                    <strong>
+                        Clear Dashboard
+                    </strong>
+
+                    <p>
+                        View your inventory at a glance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- HOME CTA -->
+
+        <section class="home-cta">
+
+
+            <div>
+
+                <span class="section-label">
+                    SMART INVENTORY
+                </span>
+
+                <h2>
+                    Ready to simplify your stock management?
+                </h2>
+
+                <p>
+                    Start managing your inventory with SmartStock today.
+                </p>
+
+            </div>
+
+
+            <button onclick="openRegister()">
+
+                Create Account →
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         FEATURES
+    =========================================== -->
+
+    <main id="featuresView"
+          class="page-view hidden">
+
+
+        <section class="inner-hero">
+
+
+            <div class="small-badge">
+
+                <span class="status-dot"></span>
+
+                Powerful Features
+
+            </div>
+
+
+            <h1>
+
+                Everything you need to manage
+
+                <span>
+                    inventory.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                SmartStock brings essential inventory
+                tools together in one clean and
+                easy-to-use system.
+
+            </p>
+
+
+        </section>
+
+
+
+        <section class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">
+                    📦
+                </div>
+
+                <h3>
+                    Product Management
+                </h3>
+
+                <p>
+                    Add new products, store product details
+                    and remove products that are no longer required.
+                </p>
+
+                <span class="feature-number">
+                    01
+                </span>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange">
+                    ⚠
+                </div>
+
+                <h3>
+                    Low Stock Alerts
+                </h3>
+
+                <p>
+                    Automatically identify products that fall
+                    below their minimum stock level.
+                </p>
+
+                <span class="feature-number">
+                    02
+                </span>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon green">
+                    📊
+                </div>
+
+                <h3>
+                    Inventory Dashboard
+                </h3>
+
+                <p>
+                    View total products, available stock and
+                    important inventory information from one dashboard.
+                </p>
+
+                <span class="feature-number">
+                    03
+                </span>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">
+                    ⚙
+                </div>
+
+                <h3>
+                    Stock Settings
+                </h3>
+
+                <p>
+                    Set a minimum stock level according to
+                    your inventory requirements.
+                </p>
+
+                <span class="feature-number">
+                    04
+                </span>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon cyan">
+                    🔎
+                </div>
+
+                <h3>
+                    Quick Search
+                </h3>
+
+                <p>
+                    Find products quickly without going
+                    through the entire inventory list.
+                </p>
+
+                <span class="feature-number">
+                    05
+                </span>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon pink">
+                    🔐
+                </div>
+
+                <h3>
+                    Secure Login
+                </h3>
+
+                <p>
+                    Access the inventory dashboard through
+                    a simple authentication system.
+                </p>
+
+                <span class="feature-number">
+                    06
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- WORKFLOW -->
+
+        <section class="workflow">
+
+
+            <div class="workflow-text">
+
+                <span class="section-label">
+                    HOW IT WORKS
+                </span>
+
+                <h2>
+                    Simple inventory management in three steps.
+                </h2>
+
+                <p>
+                    SmartStock keeps the workflow simple so you
+                    can spend less time managing stock and more
+                    time running your work.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div>
+                        01
+                    </div>
+
+                    <section>
+
+                        <h3>
+                            Add Products
+                        </h3>
+
+                        <p>
+                            Enter product name, category and stock quantity.
+                        </p>
+
+                    </section>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div>
+                        02
+                    </div>
+
+                    <section>
+
+                        <h3>
+                            Monitor Stock
+                        </h3>
+
+                        <p>
+                            Check your inventory through the dashboard.
+                        </p>
+
+                    </section>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div>
+                        03
+                    </div>
+
+                    <section>
+
+                        <h3>
+                            Get Alerts
+                        </h3>
+
+                        <p>
+                            Receive visual alerts when stock becomes low.
+                        </p>
+
+                    </section>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         ABOUT
+    =========================================== -->
+
+    <main id="aboutView"
+          class="page-view hidden">
+
+
+        <section class="about-hero">
+
+
+            <div class="about-content">
+
+                <span class="section-label">
+                    ABOUT SMARTSTOCK
+                </span>
+
+                <h1>
+
+                    A simpler way to
+
+                    <span>
+                        manage inventory.
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    SmartStock is a smart inventory and
+                    stock alert management system designed
+                    to make everyday inventory operations
+                    easier, faster and more organized.
+
+                </p>
+
+
+                <button class="primary-btn"
+                        onclick="openRegister()">
+
+                    Start Using SmartStock →
+
+                </button>
+
+            </div>
+
+
+
+            <div class="about-card">
+
+
+                <div class="about-card-top">
+
+                    <div class="about-symbol">
+                        S
+                    </div>
+
+                    <span>
+                        SMARTSTOCK
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Built for simple inventory control.
+                </h3>
+
+
+                <p>
+
+                    Track products, monitor stock quantities
+                    and identify low-stock items without
+                    complicated processes.
+
+                </p>
+
+
+                <div class="about-points">
+
+                    <div>
+                        ✓ Easy to use
+                    </div>
+
+                    <div>
+                        ✓ Fast stock monitoring
+                    </div>
+
+                    <div>
+                        ✓ Smart alerts
+                    </div>
+
+                    <div>
+                        ✓ Clean dashboard
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="about-info">
+
+
+            <div class="info-box">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Our Purpose
+                </h3>
+
+                <p>
+
+                    To provide a simple digital solution
+                    for organizing products and keeping
+                    track of stock levels.
+
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    Our Approach
+                </h3>
+
+                <p>
+
+                    SmartStock focuses on a clean interface,
+                    simple actions and useful alerts instead
+                    of unnecessary complexity.
+
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    Our Goal
+                </h3>
+
+                <p>
+
+                    Help users reduce manual stock checking
+                    and make better inventory decisions.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="about-cta">
+
+
+            <div>
+
+                <h2>
+                    Make inventory management smarter.
+                </h2>
+
+                <p>
+                    Join SmartStock and start managing
+                    your products easily.
+                </p>
+
+            </div>
+
+
+            <button onclick="openRegister()">
+
+                Create Your Account
+
+            </button>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         REGISTER MODAL
+    =========================================== -->
+
+    <div id="registerModal"
+         class="modal hidden">
+
+
+        <div class="modal-box">
+
+
+            <button class="close-btn"
+                    onclick="closeRegister()">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-logo">
+                S
+            </div>
+
+
+            <h2>
+                Create your account
+            </h2>
+
+
+            <p class="modal-subtitle">
+
+                Create an account to start using SmartStock.
+
+            </p>
+
+
+
+            <form id="registerForm">
+
+
+                <!-- USERNAME -->
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Create a username"
+                    required
+                >
+
+
+                <!-- EMAIL -->
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    required
+                >
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <label>
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    required
+                >
+
+
+                <button type="submit"
+                        class="modal-submit">
+
+                    Create Account
+
+                </button>
+
+
+                <p id="registerMessage"
+                   class="form-message">
+
+                </p>
+
+
+            </form>
+
+
+            <div class="modal-bottom">
+
+                Already have an account?
+
+                <button type="button"
+                        onclick="goToLogin()">
+
+                    Login
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+        </div>
+
+    <!-- Connect With Us -->
+    <section class="connect-section">
+
+        <div class="connect-heading">
+            <span>STAY CONNECTED</span>
+            <h2>Connect With Us</h2>
+            <p>Follow us on social media and stay updated.</p>
+        </div>
+
+        <div class="social-buttons">
+
+            <a href="/linkedin" class="social-card">
+                <div class="social-icon linkedin-icon">in</div>
+                <div class="social-info">
+                    <h3>LinkedIn</h3>
+                </div>
+            </a>
+
+            <a href="/instagram" class="social-card">
+                <div class="social-icon instagram-icon">◎</div>
+                <div class="social-info">
+                    <h3>Instagram</h3>
+                </div>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script>
+
+
+        /* ==========================================
+           PAGE NAVIGATION
+        =========================================== */
+
+
+        const views = {
+
+            home:
+                document.getElementById("homeView"),
+
+            features:
+                document.getElementById("featuresView"),
+
+            about:
+                document.getElementById("aboutView")
+
+        };
+
+
+        function showView(viewName, clickedButton) {
+
+
+            Object.values(views).forEach(function(view) {
+
+                view.classList.add("hidden");
+
+            });
+
+
+            views[viewName].classList.remove("hidden");
+
+
+            document.querySelectorAll(".nav-link")
+                .forEach(function(button) {
+
+                    button.classList.remove("active");
+
+                });
+
+
+            if (clickedButton) {
+
+                clickedButton.classList.add("active");
+
+            }
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+
+
+
+        /* ==========================================
+           LOGIN PAGE
+        =========================================== */
+
+
+        function goToLogin() {
+
+            window.location.href = "index.html";
+
+        }
+
+
+
+        /* ==========================================
+           REGISTER MODAL
+        =========================================== */
+
+
+        function openRegister() {
+
+            document.getElementById("registerModal")
+                .classList.remove("hidden");
+
+
+            document.getElementById("registerMessage")
+                .textContent = "";
+
+        }
+
+
+        function closeRegister() {
+
+            document.getElementById("registerModal")
+                .classList.add("hidden");
+
+        }
+
+
+
+        /* ==========================================
+           CLOSE MODAL OUTSIDE
+        =========================================== */
+
+
+        window.addEventListener("click", function(event) {
+
+            if (
+                event.target.id === "registerModal"
+            ) {
+
+                closeRegister();
+
+            }
+
+        });
+
+
+
+        /* ==========================================
+           REGISTER ACCOUNT
+        =========================================== */
+
+
+        document.getElementById("registerForm")
+            .addEventListener("submit", async function(event) {
+
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById(
+                        "registerUsername"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "registerEmail"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "registerPassword"
+                    ).value;
+
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirmPassword"
+                    ).value;
+
+
+                const message =
+                    document.getElementById(
+                        "registerMessage"
+                    );
+
+
+
+                /* PASSWORD CHECK */
+
+                if (
+                    password !== confirmPassword
+                ) {
+
+                    message.textContent =
+                        "Passwords do not match.";
+
+                    message.className =
+                        "form-message error";
+
+                    return;
+
+                }
+
+
+
+                /* PASSWORD LENGTH */
+
+                if (
+                    password.length < 6
+                ) {
+
+                    message.textContent =
+                        "Password must contain at least 6 characters.";
+
+                    message.className =
+                        "form-message error";
+
+                    return;
+
+                }
+
+
+
+                message.textContent =
+                    "Creating account...";
+
+                message.className =
+                    "form-message";
+
+
+
+                try {
+
+
+                    const response =
+                        await fetch(
+                            "/api/register",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        username:
+                                            username,
+
+                                        email:
+                                            email,
+
+                                        password:
+                                            password,
+
+                                        confirmPassword:
+                                            confirmPassword
+
+                                    })
+
+                            }
+                        );
+
+
+
+                    const result =
+                        await response.json();
+
+
+
+                    if (
+                        !response.ok ||
+                        !result.success
+                    ) {
+
+                        message.textContent =
+                            result.message ||
+                            "Registration failed.";
+
+                        message.className =
+                            "form-message error";
+
+                        return;
+
+                    }
+
+
+
+                    message.textContent =
+                        result.message ||
+                        "Registration successful!";
+
+                    message.className =
+                        "form-message success";
+
+
+
+                    document.getElementById(
+                        "registerForm"
+                    ).reset();
+
+
+
+                    setTimeout(function() {
+
+                        closeRegister();
+
+                        goToLogin();
+
+                    }, 1500);
+
+
+                }
+                catch (error) {
+
+
+                    message.textContent =
+                        "Unable to connect to server.";
+
+                    message.className =
+                        "form-message error";
+
+
+                }
+
+
+            });
+
+
+    </script>
+
+
+</body>
+
+</html>

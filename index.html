@@ -1,0 +1,2967 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartStock - Inventory Management</title>
+
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     LOGIN PAGE
+========================== -->
+
+<section id="loginPage" class="login-page">
+
+    <div class="login-background"></div>
+
+    <div class="login-card">
+
+        <div class="login-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <div>
+                <h1>SmartStock</h1>
+                <p>Inventory Management</p>
+            </div>
+        </div>
+
+        <div class="login-heading">
+            <h2>Welcome Back</h2>
+            <p>Login to manage your inventory</p>
+        </div>
+
+        <form id="loginForm">
+
+            <label for="username">Username</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter username"
+                    autocomplete="username"
+                    required>
+            </div>
+
+
+            <label for="password">Password</label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required>
+            </div>
+
+
+            <button class="login-button" type="submit">
+
+                <span>Login to Dashboard</span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+            <p id="loginMessage" class="login-message"></p>
+
+        </form>
+
+
+        <div class="register-link">
+
+            <span>Don't have an account?</span>
+
+            <button type="button" id="showRegister">
+                Create Account
+            </button>
+
+        </div>
+
+
+        <div class="login-footer">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            Secure Inventory Management System
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     REGISTER PAGE
+========================== -->
+
+<section id="registerPage" class="login-page register-page"
+    style="display:none;">
+
+    <div class="login-background"></div>
+
+    <div class="login-card">
+
+        <div class="login-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <div>
+                <h1>SmartStock</h1>
+                <p>Inventory Management</p>
+            </div>
+
+        </div>
+
+
+        <div class="login-heading">
+
+            <h2>Create Account</h2>
+
+            <p>Register to manage your inventory</p>
+
+        </div>
+
+
+        <form id="registerForm">
+
+
+            <label for="registerUsername">Username</label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-at"></i>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Create username"
+                    required>
+
+            </div>
+
+
+            <label for="registerEmail">Email</label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter email address"
+                    required>
+
+            </div>
+
+
+            <label for="registerPassword">Password</label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create password"
+                    autocomplete="new-password"
+                    required>
+
+            </div>
+
+
+            <label for="confirmPassword">Confirm Password</label>
+
+            <div class="input-box">
+
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    autocomplete="new-password"
+                    required>
+
+            </div>
+
+
+            <button class="login-button" type="submit">
+
+                <span>Create Account</span>
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </button>
+
+
+            <p id="registerMessage" class="login-message"></p>
+
+        </form>
+
+
+        <div class="register-link">
+
+            <span>Already have an account?</span>
+
+            <button type="button" id="backToLogin">
+                Login
+            </button>
+
+        </div>
+
+
+        <div class="login-footer">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            New accounts are registered as User
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MAIN APPLICATION
+========================== -->
+
+<section id="app" class="app hidden">
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+
+            <div>
+                <h2>SmartStock</h2>
+                <span>Inventory Management</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <button class="nav-item active"
+                data-page="dashboard">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                <span>Dashboard</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                data-page="products">
+
+                <i class="fa-solid fa-box"></i>
+
+                <span>Products</span>
+
+            </button>
+
+
+            <button class="nav-item"
+                data-page="alerts">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>Low Stock</span>
+
+                <span class="nav-badge" id="sidebarAlertCount">
+                    0
+                </span>
+
+            </button>
+
+
+            <p class="nav-title">
+                MANAGEMENT
+            </p>
+
+
+            <button class="nav-item"
+                data-page="settings">
+
+                <i class="fa-solid fa-gear"></i>
+
+                <span>Settings</span>
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="support-box">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <div>
+
+                    <strong>Need Help?</strong>
+
+                    <span>
+                        Manage your stock easily
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-version">
+                SmartStock v1.0
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu" id="mobileMenu">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div>
+
+                    <h1>Inventory Management</h1>
+
+                    <p>
+                        Monitor and manage your stock
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <div class="date-time">
+
+                    <div>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <span id="date"></span>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        <span id="time"></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROFILE -->
+
+                <div class="profile-area">
+
+                    <button
+                        id="profileButton"
+                        class="profile-button">
+
+                        <div
+                            class="profile-avatar"
+                            id="profileAvatar">
+                            D
+                        </div>
+
+
+                        <div class="profile-details">
+
+                            <strong id="profileName">
+                                Dinesh
+                            </strong>
+
+                            <span id="profileRole">
+                                Administrator
+                            </span>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-chevron-down"></i>
+
+                    </button>
+
+
+                    <div
+                        id="profileMenu"
+                        class="profile-menu">
+
+                        <div class="profile-menu-user">
+
+                            <div
+                                class="profile-avatar large"
+                                id="profileMenuAvatar">
+                                D
+                            </div>
+
+
+                            <div>
+
+                                <strong id="profileMenuName">
+                                    Dinesh
+                                </strong>
+
+                                <span id="profileMenuRole">
+                                    Administrator
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button id="logoutButton">
+
+                            <i class="fa-solid fa-right-from-bracket"></i>
+
+                            Logout
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT AREA -->
+
+        <div class="content-area">
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section
+                id="dashboardPage"
+                class="page active-page">
+
+
+                <div class="welcome-section">
+
+                    <div>
+
+                        <span class="small-label">
+                            INVENTORY OVERVIEW
+                        </span>
+
+                        <h2 id="welcomeMessage">
+                            Welcome
+                        </h2>
+
+                        <p>
+                            Keep track of your products and stock levels.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="welcomeAddProduct">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Product
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">
+
+                            <i class="fa-solid fa-box"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Products</span>
+
+                            <strong id="totalProducts">
+                                0
+                            </strong>
+
+                            <small>
+                                Products in inventory
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon red">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Low Stock</span>
+
+                            <strong id="lowStockCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Need attention
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">
+
+                            <i class="fa-solid fa-layer-group"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Total Stock</span>
+
+                            <strong id="totalStock">
+                                0
+                            </strong>
+
+                            <small>
+                                Units available
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">
+
+                            <i class="fa-solid fa-tags"></i>
+
+                        </div>
+
+                        <div>
+
+                            <span>Categories</span>
+
+                            <strong id="categoryCount">
+                                0
+                            </strong>
+
+                            <small>
+                                Product categories
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DASHBOARD PANELS -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- RECENT PRODUCTS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>Recent Products</h3>
+
+                                <p>
+                                    Latest products in your inventory
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="text-button"
+                                id="viewProductsButton">
+
+                                View All
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <div id="recentProducts">
+
+                            <div class="empty-small">
+
+                                <i class="fa-solid fa-box-open"></i>
+
+                                <p>
+                                    No products available
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ALERT PANEL -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <h3>Stock Alerts</h3>
+
+                                <p>
+                                    Products that need attention
+                                </p>
+
+                            </div>
+
+
+                            <div
+                                class="alert-number"
+                                id="dashboardAlertNumber">
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div id="dashboardAlerts">
+
+                            <div class="empty-small">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                <p>
+                                    No stock alerts
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 PRODUCTS PAGE
+            ========================== -->
+
+            <section
+                id="productsPage"
+                class="page">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="small-label">
+                            INVENTORY
+                        </span>
+
+                        <h2>Products</h2>
+
+                        <p>
+                            Manage all products in your inventory
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        id="addProductButton">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Product
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="productSearch"
+                            placeholder="Search products...">
+
+                    </div>
+
+
+                    <div class="filter-info">
+
+                        <i class="fa-solid fa-boxes-stacked"></i>
+
+                        <span>
+                            <strong id="productCountInfo">
+                                0
+                            </strong>
+                            Products
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="table-card">
+
+                    <div class="table-responsive">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>PRODUCT</th>
+
+                                    <th>CATEGORY</th>
+
+                                    <th>STOCK</th>
+
+                                    <th>MINIMUM</th>
+
+                                    <th>STATUS</th>
+
+                                    <th>ACTION</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="productTableBody">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <div
+                        id="productEmptyState"
+                        class="empty-state">
+
+                        <div>
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                        </div>
+
+                        <h3>No Products Found</h3>
+
+                        <p>
+                            Add your first product to start managing inventory.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 LOW STOCK PAGE
+            ========================== -->
+
+            <section
+                id="alertsPage"
+                class="page">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="small-label">
+                            STOCK MONITORING
+                        </span>
+
+                        <h2>Low Stock Alerts</h2>
+
+                        <p>
+                            Products below their minimum stock level
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="alert-count-large">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        <span id="alertPageCount">
+                            0
+                        </span>
+
+                        Items Need Attention
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    id="lowStockGrid"
+                    class="low-stock-grid">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 SETTINGS PAGE
+            ========================== -->
+
+            <section
+                id="settingsPage"
+                class="page">
+
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="small-label">
+                            CONFIGURATION
+                        </span>
+
+                        <h2>Settings</h2>
+
+                        <p>
+                            Configure your inventory preferences
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="settings-card">
+
+                    <div class="settings-icon">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                    </div>
+
+
+                    <div class="settings-content">
+
+                        <h3>
+                            Minimum Stock Level
+                        </h3>
+
+                        <p>
+                            Set the default minimum stock quantity.
+                            Products at or below this level will appear
+                            in the Low Stock Alerts section.
+                        </p>
+
+
+                        <div class="minimum-control">
+
+                            <button id="decreaseMinimum">
+
+                                <i class="fa-solid fa-minus"></i>
+
+                            </button>
+
+
+                            <div class="minimum-value">
+
+                                <strong id="minimumValue">
+                                    5
+                                </strong>
+
+                                <span>
+                                    Units
+                                </span>
+
+                            </div>
+
+
+                            <button id="increaseMinimum">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            class="primary-button"
+                            id="saveSettings">
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Save Settings
+
+                        </button>
+
+
+                        <p
+                            id="settingMessage"
+                            class="setting-message">
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="current-setting">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    Current default minimum stock:
+                    <strong id="currentMinimumText">
+                        5 units
+                    </strong>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</section>
+
+
+
+<!-- =========================
+     ADD PRODUCT MODAL
+========================== -->
+
+<div
+    id="productModal"
+    class="modal-overlay hidden">
+
+    <div class="modal">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="small-label">
+                    INVENTORY
+                </span>
+
+                <h2>Add New Product</h2>
+
+            </div>
+
+
+            <button
+                id="closeProductModal"
+                class="close-button">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <form id="productForm">
+
+
+            <div class="form-group">
+
+                <label for="productName">
+                    Product Name
+                </label>
+
+                <div class="form-input">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <input
+                        type="text"
+                        id="productName"
+                        placeholder="Enter product name"
+                        required>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="productCategory">
+                    Category
+                </label>
+
+                <div class="form-input">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <select id="productCategory" required>
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option value="Electronics">
+                            Electronics
+                        </option>
+
+                        <option value="Accessories">
+                            Accessories
+                        </option>
+
+                        <option value="Stationery">
+                            Stationery
+                        </option>
+
+                        <option value="Office Supplies">
+                            Office Supplies
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="productStock">
+                        Stock Quantity
+                    </label>
+
+                    <div class="form-input">
+
+                        <i class="fa-solid fa-cubes"></i>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            min="0"
+                            placeholder="0"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="productMinimum">
+                        Minimum Stock
+                    </label>
+
+                    <div class="form-input">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                        <input
+                            type="number"
+                            id="productMinimum"
+                            min="0"
+                            placeholder="5"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <p
+                id="productFormMessage"
+                class="form-message">
+            </p>
+
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    id="cancelProduct"
+                    class="secondary-button">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Add Product
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     BROWSER SIDE JAVASCRIPT
+     Only frontend JavaScript
+========================== -->
+
+<script>
+
+    const $ = (id) => document.getElementById(id);
+
+    let currentUser = null;
+    let products = [];
+    let currentMinimum = 5;
+
+
+
+    /* =========================
+       USER UI
+    ========================== */
+
+    function updateUserUI(user) {
+
+        if (!user) return;
+
+        currentUser = user;
+
+        const name = user.name || "User";
+        const role = user.role || "User";
+
+        const initial = name
+            .trim()
+            .charAt(0)
+            .toUpperCase() || "U";
+
+
+        $("profileAvatar").textContent = initial;
+        $("profileName").textContent = name;
+        $("profileRole").textContent = role;
+
+        $("profileMenuAvatar").textContent = initial;
+        $("profileMenuName").textContent = name;
+        $("profileMenuRole").textContent = role;
+
+        updateWelcomeMessage();
+    }
+
+
+
+    /* =========================
+       WELCOME MESSAGE
+    ========================== */
+
+    function updateWelcomeMessage() {
+
+        const now = new Date();
+        const hour = now.getHours();
+
+        let greeting = "Good Evening";
+
+        if (hour >= 5 && hour < 12) {
+
+            greeting = "Good Morning";
+
+        } else if (hour >= 12 && hour < 17) {
+
+            greeting = "Good Afternoon";
+
+        } else if (hour >= 22 || hour < 5) {
+
+            greeting = "Good Night";
+
+        }
+
+
+        const name = currentUser
+            ? currentUser.name
+            : "User";
+
+
+        $("welcomeMessage").textContent =
+            `${greeting}, ${name}`;
+    }
+
+
+
+    /* =========================
+       DATE & TIME
+    ========================== */
+
+    function updateDateTime() {
+
+        const now = new Date();
+
+        $("date").textContent =
+            now.toLocaleDateString("en-IN");
+
+        $("time").textContent =
+            now.toLocaleTimeString("en-IN");
+
+        updateWelcomeMessage();
+    }
+
+    updateDateTime();
+
+    setInterval(updateDateTime, 1000);
+
+
+
+    /* =========================
+       LOGIN
+    ========================== */
+
+    $("loginForm").addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            $("loginMessage").textContent =
+                "Checking login...";
+
+
+            try {
+
+                const response = await fetch(
+                    "/api/login",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            username:
+                                $("username").value.trim(),
+
+                            password:
+                                $("password").value
+
+                        })
+                    }
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    updateUserUI(result.user);
+
+
+                    $("loginPage").style.display =
+                        "none";
+
+                    $("registerPage").style.display =
+                        "none";
+
+                    $("app").classList.remove(
+                        "hidden"
+                    );
+
+
+                    $("loginForm").reset();
+
+                    $("loginMessage").textContent =
+                        "";
+
+
+                    loadProducts();
+
+                    loadSettings();
+
+                } else {
+
+                    $("loginMessage").textContent =
+                        result.message ||
+                        "Invalid username or password.";
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                $("loginMessage").textContent =
+                    "Unable to connect to server.";
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       OPEN REGISTER PAGE
+    ========================== */
+
+    $("showRegister").addEventListener(
+        "click",
+        function () {
+
+            $("loginPage").style.display =
+                "none";
+
+            $("registerPage").style.display =
+                "flex";
+
+            $("registerMessage").textContent =
+                "";
+
+            $("registerForm").reset();
+
+        }
+    );
+
+
+
+    /* =========================
+       BACK TO LOGIN
+    ========================== */
+
+    $("backToLogin").addEventListener(
+        "click",
+        function () {
+
+            $("registerPage").style.display =
+                "none";
+
+            $("loginPage").style.display =
+                "flex";
+
+            $("registerForm").reset();
+
+            $("registerMessage").textContent =
+                "";
+
+        }
+    );
+
+
+
+    /* =========================
+       REGISTRATION
+    ========================== */
+
+    $("registerForm").addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                $("registerName").value.trim();
+
+            const username =
+                $("registerUsername").value.trim();
+
+            const email =
+                $("registerEmail").value.trim();
+
+            const password =
+                $("registerPassword").value;
+
+            const confirmPassword =
+                $("confirmPassword").value;
+
+
+            if (password !== confirmPassword) {
+
+                $("registerMessage").textContent =
+                    "Passwords do not match.";
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                $("registerMessage").textContent =
+                    "Password must contain at least 6 characters.";
+
+                return;
+            }
+
+
+            $("registerMessage").textContent =
+                "Creating your account...";
+
+
+            try {
+
+                const response = await fetch(
+                    "/api/register",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            name: name,
+                            username: username,
+                            email: email,
+                            password: password,
+                            confirmPassword:
+                                confirmPassword
+
+                        })
+                    }
+                );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    $("registerMessage").style.color =
+                        "var(--green)";
+
+                    $("registerMessage").textContent =
+                        result.message ||
+                        "Registration successful.";
+
+
+                    $("registerForm").reset();
+
+
+                    setTimeout(function () {
+
+                        $("registerPage").style.display =
+                            "none";
+
+                        $("loginPage").style.display =
+                            "flex";
+
+                        $("registerMessage").style.color =
+                            "var(--red)";
+
+                        $("loginMessage").style.color =
+                            "var(--green)";
+
+                        $("loginMessage").textContent =
+                            "Account created successfully. Please login.";
+
+                    }, 1800);
+
+                } else {
+
+                    $("registerMessage").style.color =
+                        "var(--red)";
+
+                    $("registerMessage").textContent =
+                        result.message ||
+                        "Registration failed.";
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                $("registerMessage").style.color =
+                    "var(--red)";
+
+                $("registerMessage").textContent =
+                    "Unable to connect to server.";
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       NAVIGATION
+    ========================== */
+
+    document.querySelectorAll(".nav-item")
+        .forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const page =
+                        button.dataset.page;
+
+
+                    document.querySelectorAll(
+                        ".nav-item"
+                    ).forEach(function (item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    document.querySelectorAll(
+                        ".page"
+                    ).forEach(function (section) {
+
+                        section.classList.remove(
+                            "active-page"
+                        );
+
+                    });
+
+
+                    $(page + "Page")
+                        .classList.add(
+                            "active-page"
+                        );
+
+
+                    if (page === "dashboard") {
+
+                        loadDashboard();
+
+                    }
+
+
+                    if (page === "alerts") {
+
+                        loadLowStock();
+
+                    }
+
+
+                    $("sidebar").classList.remove(
+                        "mobile-open"
+                    );
+
+                }
+            );
+
+        });
+
+
+
+    /* =========================
+       PROFILE MENU
+    ========================== */
+
+    $("profileButton").addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+            $("profileMenu")
+                .classList.toggle("show");
+
+        }
+    );
+
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                !event.target.closest(
+                    ".profile-area"
+                )
+            ) {
+
+                $("profileMenu")
+                    .classList.remove("show");
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       LOGOUT
+    ========================== */
+
+    $("logoutButton").addEventListener(
+        "click",
+        function () {
+
+            currentUser = null;
+
+            $("app").classList.add("hidden");
+
+            $("registerPage").style.display =
+                "none";
+
+            $("loginPage").style.display =
+                "flex";
+
+
+            $("loginForm").reset();
+
+            $("registerForm").reset();
+
+            $("loginMessage").textContent =
+                "";
+
+            $("registerMessage").textContent =
+                "";
+
+
+            $("profileMenu")
+                .classList.remove("show");
+
+
+            $("profileName").textContent =
+                "Dinesh";
+
+            $("profileRole").textContent =
+                "Administrator";
+
+            $("profileAvatar").textContent =
+                "D";
+
+            $("profileMenuName").textContent =
+                "Dinesh";
+
+            $("profileMenuRole").textContent =
+                "Administrator";
+
+            $("profileMenuAvatar").textContent =
+                "D";
+
+        }
+    );
+
+
+
+    /* =========================
+       LOAD PRODUCTS
+    ========================== */
+
+    async function loadProducts() {
+
+        try {
+
+            const response =
+                await fetch("/api/products");
+
+            products =
+                await response.json();
+
+
+            if (!Array.isArray(products)) {
+
+                products = [];
+
+            }
+
+
+            renderProducts();
+
+            updateDashboardStats();
+
+            loadLowStock();
+
+            loadDashboard();
+
+        } catch (error) {
+
+            console.error(
+                "Product loading error:",
+                error
+            );
+
+        }
+
+    }
+
+
+
+    /* =========================
+       RENDER PRODUCTS
+    ========================== */
+
+    function renderProducts(
+        searchText = ""
+    ) {
+
+        const tbody =
+            $("productTableBody");
+
+        const emptyState =
+            $("productEmptyState");
+
+
+        const search =
+            searchText.toLowerCase().trim();
+
+
+        const filtered =
+            products.filter(function (product) {
+
+                return (
+                    product.name
+                        .toLowerCase()
+                        .includes(search)
+                    ||
+                    product.category
+                        .toLowerCase()
+                        .includes(search)
+                );
+
+            });
+
+
+        tbody.innerHTML = "";
+
+
+        $("productCountInfo").textContent =
+            filtered.length;
+
+
+        if (filtered.length === 0) {
+
+            emptyState.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        emptyState.style.display =
+            "none";
+
+
+        filtered.forEach(function (product) {
+
+            const low =
+                Number(product.stock) <=
+                Number(product.minimum);
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML = `
+
+                <td>
+
+                    <div class="product-name">
+
+                        <div class="mini-product">
+
+                            <i class="fa-solid fa-box"></i>
+
+                        </div>
+
+                        <strong>
+                            ${escapeHtml(product.name)}
+                        </strong>
+
+                    </div>
+
+                </td>
+
+                <td>
+                    ${escapeHtml(product.category)}
+                </td>
+
+                <td>
+                    ${product.stock}
+                </td>
+
+                <td>
+                    ${product.minimum}
+                </td>
+
+                <td>
+
+                    <span class="status ${low ? "danger" : "success"}">
+
+                        ${low ? "Low Stock" : "In Stock"}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <button
+                        class="delete-button"
+                        onclick="deleteProduct('${product._id}')">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(row);
+
+        });
+
+    }
+
+
+
+    /* =========================
+       ESCAPE HTML
+    ========================== */
+
+    function escapeHtml(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+
+    /* =========================
+       SEARCH
+    ========================== */
+
+    $("productSearch").addEventListener(
+        "input",
+        function () {
+
+            renderProducts(
+                this.value
+            );
+
+        }
+    );
+
+
+
+    /* =========================
+       DELETE PRODUCT
+    ========================== */
+
+    async function deleteProduct(id) {
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to delete this product?"
+            );
+
+
+        if (!confirmed) return;
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `/api/products/${id}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (result.success) {
+
+                loadProducts();
+
+            } else {
+
+                alert(
+                    result.message ||
+                    "Unable to delete product."
+                );
+
+            }
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to connect to server."
+            );
+
+        }
+
+    }
+
+
+
+    /* =========================
+       DASHBOARD STATISTICS
+    ========================== */
+
+    function updateDashboardStats() {
+
+        const total =
+            products.length;
+
+
+        const stock =
+            products.reduce(
+                function (sum, product) {
+
+                    return sum +
+                        Number(product.stock);
+
+                },
+                0
+            );
+
+
+        const categories =
+            new Set(
+                products.map(
+                    function (product) {
+                        return product.category;
+                    }
+                )
+            ).size;
+
+
+        const low =
+            products.filter(
+                function (product) {
+
+                    return Number(product.stock)
+                        <= Number(product.minimum);
+
+                }
+            ).length;
+
+
+        $("totalProducts").textContent =
+            total;
+
+        $("totalStock").textContent =
+            stock;
+
+        $("categoryCount").textContent =
+            categories;
+
+        $("lowStockCount").textContent =
+            low;
+
+        $("sidebarAlertCount").textContent =
+            low;
+
+        $("dashboardAlertNumber").textContent =
+            low;
+
+        $("alertPageCount").textContent =
+            low;
+
+    }
+
+
+
+    /* =========================
+       DASHBOARD
+    ========================== */
+
+    function loadDashboard() {
+
+        updateDashboardStats();
+
+
+        const recent =
+            products.slice(-5).reverse();
+
+
+        const container =
+            $("recentProducts");
+
+
+        if (recent.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-small">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                    <p>No products available</p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        recent.forEach(function (product) {
+
+            const low =
+                Number(product.stock)
+                <= Number(product.minimum);
+
+
+            const item =
+                document.createElement("div");
+
+
+            item.className =
+                "recent-item";
+
+
+            item.innerHTML = `
+
+                <div class="recent-icon">
+
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+
+                <div class="recent-info">
+
+                    <strong>
+                        ${escapeHtml(product.name)}
+                    </strong>
+
+                    <span>
+                        ${escapeHtml(product.category)}
+                    </span>
+
+                </div>
+
+                <div class="recent-stock ${low ? "low" : ""}">
+
+                    ${product.stock}
+
+                    <small>units</small>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        });
+
+
+        loadDashboardAlerts();
+
+    }
+
+
+
+    /* =========================
+       DASHBOARD ALERTS
+    ========================== */
+
+    function loadDashboardAlerts() {
+
+        const container =
+            $("dashboardAlerts");
+
+
+        const lowProducts =
+            products.filter(
+                function (product) {
+
+                    return Number(product.stock)
+                        <= Number(product.minimum);
+
+                }
+            ).slice(0, 5);
+
+
+        if (lowProducts.length === 0) {
+
+            container.innerHTML = `
+
+                <div class="empty-small">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <p>No stock alerts</p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        lowProducts.forEach(
+            function (product) {
+
+                const item =
+                    document.createElement("div");
+
+
+                item.className =
+                    "dashboard-alert";
+
+
+                item.innerHTML = `
+
+                    <div class="alert-icon">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ${escapeHtml(product.name)}
+                        </strong>
+
+                        <span>
+                            Only ${product.stock} units left
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(item);
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================
+       LOW STOCK
+    ========================== */
+
+    async function loadLowStock() {
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/products/low-stock"
+                );
+
+
+            const data =
+                await response.json();
+
+
+            const lowProducts =
+                Array.isArray(data)
+                    ? data
+                    : [];
+
+
+            renderLowStock(
+                lowProducts
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Low stock error:",
+                error
+            );
+
+        }
+
+    }
+
+
+
+    function renderLowStock(
+        lowProducts
+    ) {
+
+        const grid =
+            $("lowStockGrid");
+
+
+        $("alertPageCount").textContent =
+            lowProducts.length;
+
+
+        if (lowProducts.length === 0) {
+
+            grid.innerHTML = `
+
+                <div class="panel">
+
+                    <div class="empty-small">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <p>
+                            All products have sufficient stock.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        grid.innerHTML = "";
+
+
+        lowProducts.forEach(
+            function (product) {
+
+                const minimum =
+                    Number(product.minimum);
+
+                const stock =
+                    Number(product.stock);
+
+
+                let percentage = 0;
+
+                if (minimum > 0) {
+
+                    percentage =
+                        (stock / minimum) * 100;
+
+                }
+
+
+                percentage =
+                    Math.max(
+                        0,
+                        Math.min(
+                            100,
+                            percentage
+                        )
+                    );
+
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "low-stock-card";
+
+
+                card.innerHTML = `
+
+                    <div class="low-card-top">
+
+                        <div class="large-alert-icon">
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                        </div>
+
+                        <span class="status danger">
+                            Low Stock
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ${escapeHtml(product.name)}
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(product.category)}
+                    </p>
+
+
+                    <div class="stock-progress">
+
+                        <div class="progress-label">
+
+                            <span>
+                                Current Stock
+                            </span>
+
+                            <strong>
+                                ${stock} units
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <span
+                                style="width:${percentage}%">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="minimum-note">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                        Minimum required:
+                        ${minimum} units
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(card);
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================
+       ADD PRODUCT MODAL
+    ========================== */
+
+    function openProductModal() {
+
+        $("productModal")
+            .classList.remove("hidden");
+
+
+        $("productForm").reset();
+
+        $("productFormMessage").textContent =
+            "";
+
+
+        $("productMinimum").value =
+            currentMinimum;
+
+    }
+
+
+    function closeProductModal() {
+
+        $("productModal")
+            .classList.add("hidden");
+
+    }
+
+
+    $("addProductButton")
+        .addEventListener(
+            "click",
+            openProductModal
+        );
+
+
+    $("welcomeAddProduct")
+        .addEventListener(
+            "click",
+            openProductModal
+        );
+
+
+    $("closeProductModal")
+        .addEventListener(
+            "click",
+            closeProductModal
+        );
+
+
+    $("cancelProduct")
+        .addEventListener(
+            "click",
+            closeProductModal
+        );
+
+
+    $("productModal")
+        .addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    $("productModal")
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+
+
+    /* =========================
+       ADD PRODUCT
+    ========================== */
+
+    $("productForm").addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            $("productFormMessage")
+                .textContent =
+                "Adding product...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/products",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                name:
+                                    $("productName")
+                                        .value.trim(),
+
+                                category:
+                                    $("productCategory")
+                                        .value,
+
+                                stock:
+                                    Number(
+                                        $("productStock")
+                                            .value
+                                    ),
+
+                                minimum:
+                                    Number(
+                                        $("productMinimum")
+                                            .value
+                                    )
+
+                            })
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    $("productFormMessage")
+                        .style.color =
+                        "var(--green)";
+
+                    $("productFormMessage")
+                        .textContent =
+                        "Product added successfully.";
+
+
+                    setTimeout(
+                        function () {
+
+                            closeProductModal();
+
+                            loadProducts();
+
+                        },
+                        700
+                    );
+
+                } else {
+
+                    $("productFormMessage")
+                        .style.color =
+                        "var(--red)";
+
+                    $("productFormMessage")
+                        .textContent =
+                        result.message ||
+                        "Unable to add product.";
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                $("productFormMessage")
+                    .textContent =
+                    "Unable to connect to server.";
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       VIEW PRODUCTS
+    ========================== */
+
+    $("viewProductsButton")
+        .addEventListener(
+            "click",
+            function () {
+
+                document.querySelectorAll(
+                    ".nav-item"
+                ).forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                document.querySelector(
+                    '[data-page="products"]'
+                ).classList.add(
+                    "active"
+                );
+
+
+                document.querySelectorAll(
+                    ".page"
+                ).forEach(
+                    function (page) {
+
+                        page.classList.remove(
+                            "active-page"
+                        );
+
+                    }
+                );
+
+
+                $("productsPage")
+                    .classList.add(
+                        "active-page"
+                    );
+
+
+                renderProducts();
+
+            }
+        );
+
+
+
+    /* =========================
+       SETTINGS
+    ========================== */
+
+    async function loadSettings() {
+
+        try {
+
+            const response =
+                await fetch(
+                    "/api/settings"
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                data &&
+                data.minimum !== undefined
+            ) {
+
+                currentMinimum =
+                    Number(data.minimum);
+
+            } else if (
+                data &&
+                data.minimumStock !== undefined
+            ) {
+
+                currentMinimum =
+                    Number(data.minimumStock);
+
+            }
+
+
+            updateMinimumUI();
+
+        } catch (error) {
+
+            console.error(
+                "Settings error:",
+                error
+            );
+
+        }
+
+    }
+
+
+
+    function updateMinimumUI() {
+
+        $("minimumValue").textContent =
+            currentMinimum;
+
+        $("currentMinimumText").textContent =
+            `${currentMinimum} units`;
+
+    }
+
+
+    $("decreaseMinimum")
+        .addEventListener(
+            "click",
+            function () {
+
+                if (currentMinimum > 1) {
+
+                    currentMinimum--;
+
+                    updateMinimumUI();
+
+                }
+
+            }
+        );
+
+
+    $("increaseMinimum")
+        .addEventListener(
+            "click",
+            function () {
+
+                currentMinimum++;
+
+                updateMinimumUI();
+
+            }
+        );
+
+
+
+    $("saveSettings")
+        .addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/settings",
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    minimum:
+                                        currentMinimum
+
+                                })
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (result.success) {
+
+                        $("settingMessage")
+                            .textContent =
+                            "Settings saved successfully.";
+
+                        setTimeout(
+                            function () {
+
+                                $("settingMessage")
+                                    .textContent =
+                                    "";
+
+                            },
+                            2500
+                        );
+
+                        loadProducts();
+
+                    } else {
+
+                        $("settingMessage")
+                            .style.color =
+                            "var(--red)";
+
+                        $("settingMessage")
+                            .textContent =
+                            result.message ||
+                            "Unable to save settings.";
+
+                    }
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    $("settingMessage")
+                        .style.color =
+                        "var(--red)";
+
+                    $("settingMessage")
+                        .textContent =
+                        "Unable to connect to server.";
+
+                }
+
+            }
+        );
+
+
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    $("mobileMenu")
+        .addEventListener(
+            "click",
+            function () {
+
+                $("sidebar")
+                    .classList.toggle(
+                        "mobile-open"
+                    );
+
+            }
+        );
+
+</script>
+
+</body>
+
+</html>
+
+Close
